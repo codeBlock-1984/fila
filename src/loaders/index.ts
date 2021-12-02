@@ -2,6 +2,8 @@ import express from 'express';
 
 import expressLoader from './express.loader';
 
+/* eslint-disable no-console */
+
 /**
  * Loader class
  */

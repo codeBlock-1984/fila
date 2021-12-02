@@ -1,0 +1,5 @@
+node_modules
+dist
+*.config.*
+ormconfig.ts
+__test__

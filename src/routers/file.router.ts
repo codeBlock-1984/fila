@@ -15,5 +15,10 @@ router.get('/',
   validationResponse,
   FileController.list);
 
+router.get('/:id',
+  validator.get,
+  validationResponse,
+  FileController.getById);
+
 export default router;
 

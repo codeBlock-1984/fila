@@ -1,4 +1,4 @@
-import { body, query } from 'express-validator';
+import { body, param, query } from 'express-validator';
 
 export default {
   create: [
@@ -38,5 +38,17 @@ export default {
       .toInt()
       .custom(val => typeof val === 'number')
       .withMessage('invalid limit')
+  ],
+  get: [
+    param('id')
+      .exists()
+      .withMessage('id is required')
+      .bail()
+      .isInt()
+      .withMessage('invalid id')
+      .bail()
+      .toInt()
+      .custom(val => typeof val === 'number')
+      .withMessage('invalid id')
   ]
 };

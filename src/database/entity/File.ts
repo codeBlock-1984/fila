@@ -18,12 +18,12 @@ export class File {
   size!: number;
 
   @Column()
-  format!: number;
+  format!: string;
 
   @CreateDateColumn()
   createdAt!: Date;
 
   @UpdateDateColumn()
-  updatedAt!: number;
+  updatedAt!: Date;
 
 }

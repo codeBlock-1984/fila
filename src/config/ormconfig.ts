@@ -3,7 +3,7 @@ import config from './config';
 
 const isProd = config.app.env === 'production';
 const ext = `${ isProd ? 'js' : 'ts'}`;
-const dir = `${ isProd ? 'build' : 'src' }`;
+const dir = `${ isProd ? 'dist' : 'src' }`;
 
 const dbConfig = config.db[config.app.env];
 

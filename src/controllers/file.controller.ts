@@ -50,4 +50,25 @@ export class FileController {
       next(error);
     }
   }
+
+  /**
+   * 
+   * @param {Request} req - request object 
+   * @param {Response} res - resonse object
+   * @param {NextFunction} next - next middleware function
+   * 
+   * @returns {Promise} - 
+   */
+  static async getById(req: Request, res: Response, next: NextFunction): Promise<void> {
+    try {
+      const { id } = req.params;
+
+      const result = await FileService.getById(Number(id));
+      res.locals.data = apiResponse(200, 'File fetched successfully.', result);
+
+      next();
+    } catch (error) {
+      next(error);
+    }
+  }
 }

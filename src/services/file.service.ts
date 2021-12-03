@@ -41,4 +41,19 @@ export class FileService {
       records: files
     };
   }
+
+  /**
+   * 
+   * @param {number} id - id of file to fetch
+   * 
+   * @returns {Promise} - file entity
+   */
+  static async getById(id: number): Promise<File | undefined> {
+    const file = await getCustomRepository(FileRepository)
+      .findOne({
+        where: { id }
+      });
+
+    return file;
+  }
 }

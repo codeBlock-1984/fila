@@ -11,7 +11,11 @@ import { logger } from '../helpers/logger';
  */
 export const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction): void => {
   if (err) {
+    const { requestId } = res.locals;
+
     logger.error(err.message);
+    res.status(500).json({ requestId, status: 500, message: 'An unexpected error occurred!' });
+  } else {
+    next();
   }
-  next(err);
 };

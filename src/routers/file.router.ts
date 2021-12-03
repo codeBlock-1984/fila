@@ -10,5 +10,10 @@ router.post('/',
   validationResponse,
   FileController.create);
 
+router.get('/',
+  validator.list,
+  validationResponse,
+  FileController.list);
+
 export default router;
 

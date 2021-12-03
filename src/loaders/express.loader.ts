@@ -20,9 +20,9 @@ const loader = async (app: Application): Promise<Application> => {
   app.use(urlencoded({ extended: true }));
   app.use(requestIdentityHandler);
   app.use('/api/v1', router);
-  app.use(errorHandler);
   app.use(responseHandler);
-  app.all('*', notFoundHandler);
+  app.use(errorHandler);
+  app.use('*', notFoundHandler);
 
   return app;
 };

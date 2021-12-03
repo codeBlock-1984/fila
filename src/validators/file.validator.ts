@@ -50,5 +50,17 @@ export default {
       .toInt()
       .custom(val => typeof val === 'number')
       .withMessage('invalid id')
+  ],
+  delete: [
+    param('id')
+      .exists()
+      .withMessage('id is required')
+      .bail()
+      .isInt()
+      .withMessage('invalid id')
+      .bail()
+      .toInt()
+      .custom(val => typeof val === 'number')
+      .withMessage('invalid id')
   ]
 };

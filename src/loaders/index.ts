@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Application } from 'express';
 
 import expressLoader from './express.loader';
 import dbLoader from './db.loader';
@@ -15,11 +15,12 @@ class Loader {
    * @param {object} app - Express application 
    * @returns {Promise} -
    */
-  static async init(app: express.Application): Promise<void> {
+  static async init(app: express.Application): Promise<Application> {
     await dbLoader();
     console.log('database connected');
-    expressLoader(app);
+    const loadedApp = await expressLoader(app);
     console.log('express app initialized...');
+    return loadedApp;
   }
 }
 

@@ -20,5 +20,10 @@ router.get('/:id',
   validationResponse,
   FileController.getById);
 
+router.delete('/:id',
+  validator.delete,
+  validationResponse,
+  FileController.delete);
+
 export default router;
 

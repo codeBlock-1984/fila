@@ -1,4 +1,4 @@
-import { getCustomRepository } from 'typeorm';
+import { DeleteResult, getCustomRepository } from 'typeorm';
 import { File } from '../database/entity/File';
 import { FileForm } from '../forms/file.form';
 import { PagedResponse } from '../models/pagedResponse.model';
@@ -55,5 +55,33 @@ export class FileService {
       });
 
     return file;
+  }
+
+  /**
+   * 
+   * @param {number} id - id of file to delete
+   * 
+   * @returns {Promise} - 
+   */
+  static async delete(id: number): Promise<DeleteResult> {
+    const result = await getCustomRepository(FileRepository)
+      .delete(id);
+
+    return result;
+  }
+
+  /**
+   * 
+   * @param {number} id - id of file to check
+   * 
+   * @returns {Promise} - 
+   */
+  static async exists(id: number): Promise<boolean> {
+    const result = await getCustomRepository(FileRepository)
+      .findOne({
+        where: { id }
+      });
+
+    return !!result;
   }
 }

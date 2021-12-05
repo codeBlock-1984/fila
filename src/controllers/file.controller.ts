@@ -42,7 +42,7 @@ export class FileController {
     try {
       const { page = 1, limit = 10 }: Pagination = req.query;
 
-      const result = await FileService.list(page, limit);
+      const result = await FileService.list(+page, +limit);
       res.locals.data = apiResponse(200, 'Files fetched successfully.', result);
 
       next();
@@ -67,7 +67,7 @@ export class FileController {
       const exists = await FileService.exists(parsedId);
 
       if (!exists) {
-        res.locals.data = apiResponse(404, 'File with not found.', { id });
+        res.locals.data = apiResponse(404, 'File not found.', { id: parsedId });
       } else {
         const result = await FileService.getById(parsedId);
         res.locals.data = apiResponse(200, 'File fetched successfully.', result);
@@ -95,10 +95,10 @@ export class FileController {
       const exists = await FileService.exists(parsedId);
 
       if (!exists) {
-        res.locals.data = apiResponse(404, 'File with not found.', { id });
+        res.locals.data = apiResponse(404, 'File not found.', { id: parsedId });
       } else {
         await FileService.delete(parsedId);
-        res.locals.data = apiResponse(200, 'File deleted successfully.', { id });
+        res.locals.data = apiResponse(200, 'File deleted successfully.', { id: parsedId });
       }
 
       next();

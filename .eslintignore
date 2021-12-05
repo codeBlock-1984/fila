@@ -3,3 +3,5 @@ dist
 *.config.*
 ormconfig.ts
 __test__
+*.spec.*
+*.test.*
